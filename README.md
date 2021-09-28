@@ -1,2 +1,1 @@
-# discord-banker-guardbot
-discord guard bot
+## Yakında Paylaşıcam star atın bari
