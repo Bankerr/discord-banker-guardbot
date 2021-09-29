@@ -5,7 +5,7 @@ Botta Rol Koruma + Kanal Koruma + Sunucu Koruma + Üye Koruma vardır (4 Farklı
 
 Normal bi guard bot işte sadece durum falan değişiyo işte
 
-Evet Buda Starlı :( daha çok kişiye ulaşması için star istiyorum 10 - 15 star geldiğinde atıcam zaten çok özellik yok
+Evet Buda Starlı :( daha çok kişiye ulaşması için star istiyorum 10 - 15 star geldiğinde atıcam 
 
 Herkese İyi Kodlamalar!
 ## Diğer Botlarım
