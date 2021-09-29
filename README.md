@@ -1,7 +1,7 @@
 ## Bot Hakkında
 Bot rol silindiğinde, kanal silindiğinde , url değiştiğinde durumları değişiyor! (config kısmından ayarlıyorsunuz)
 
-Botta Rol Koruma + Kanal Koruma + Sunucu Koruma vardır (3 Farklı Bot)
+Botta Rol Koruma + Kanal Koruma + Sunucu Koruma + Üye Koruma vardır (4 Farklı Bot)
 
 Normal bi guard bot işte sadece durum falan değişiyo işte
 
