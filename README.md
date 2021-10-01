@@ -5,9 +5,19 @@ Botta Rol Koruma + Kanal Koruma + Sunucu Koruma + Üye Koruma vardır (4 Farklı
 
 Normal bi guard bot işte sadece durum falan değişiyo işte
 
-Evet Buda Starlı :( daha çok kişiye ulaşması için star istiyorum 10 - 15 star geldiğinde atıcam 
+Herşeyi config.json'da belirttim ona göre doldurup rahatlıkla kullanabilirsiniz
 
+Guard1 = Role Silme + Rol Güncelleme + Rol Açma Korumasıdır
+
+Guard2 = Kanal Silme + Kanal Güncelleme + Kanal Açma Korumasıdır
+
+Guard3 = Sunucu Ayarları + URL Korumasıdır
+
+Guard4 = Kullanıcı Banlama + Bot Ekleme + Kullanıcı Kickleme Korumasıdır + olarak yetki kapatma sistemide var oda otomatik bütün yetileri kapatıyor!
+
+Gelişmiş bi Guard Bot İşte
 Herkese İyi Kodlamalar!
+
 ## Diğer Botlarım
 https://github.com/Bankerr/discord-usertoken-backup Bakmaya ne dersin
 
