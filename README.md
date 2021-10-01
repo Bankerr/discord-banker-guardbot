@@ -1,12 +1,8 @@
-## Bot Hakkında
-Bot rol silindiğinde, kanal silindiğinde , url değiştiğinde durumları değişiyor! (config kısmından ayarlıyorsunuz)
+## Kurulum 
 
-Botta Rol Koruma + Kanal Koruma + Sunucu Koruma + Üye Koruma vardır (4 Farklı Bot)
+Herşeyi config.json'da belirttim ona göre doldurup rahatlıkla kullanabilirsiniz herşey belli zaten daha neyini açıklıyım sadece 'BotsStatus' bu ne diyeceksiniz bu rol silindiğinde + kanal silindiğinde + url değiştinde guardların activityleri değişiyor (bota res attığınzda düzeliyor)
 
-Normal bi guard bot işte sadece durum falan değişiyo işte
-
-Herşeyi config.json'da belirttim ona göre doldurup rahatlıkla kullanabilirsiniz
-
+## Bot Bilgisi
 Guard1 = Role Silme + Rol Güncelleme + Rol Açma Korumasıdır
 
 Guard2 = Kanal Silme + Kanal Güncelleme + Kanal Açma Korumasıdır
