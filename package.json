@@ -1,0 +1,18 @@
+{
+  "name": "banker",
+  "version": "0.0.1",
+  "description": "banker Bot",
+  "main": "banker.js",
+  "scripts": {
+    "test": "node banker.js"
+  },
+  "author": "banker",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.20",
+    "request": "^2.88.2"
+  },
+  "keywords": []
+}
