@@ -1,4 +1,4 @@
-eğer hoşunuza gittiyse bi star atın be
+eğer hoşunuza gittiyse bi star atın be Botu alın kullanın ama satmaya kalkarsanız orda tekrar buluşuruz
 ## Kurulum 
 
 Herşeyi config.json'da belirttim ona göre doldurup rahatlıkla kullanabilirsiniz herşey belli zaten daha neyini açıklıyım 'installmodules.bat' dosyasını açıp modülleri indirebilirsiniz 'start.bat' ile botları başlatabilirsiniz sadece 'BotsStatus' bu ne diyeceksiniz bu rol silindiğinde + kanal silindiğinde + url değiştinde guardların activityleri değişiyor (bota res attığınzda düzeliyor) 
