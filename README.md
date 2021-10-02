@@ -1,3 +1,5 @@
+## Proje hazırdır 20 star geldiğinde anında atılacaktır!
+
 eğer hoşunuza gittiyse bi star atın be Botu alın kullanın ama satmaya kalkarsanız orda tekrar buluşuruz discord: Banker.#2529
 ## Kurulum 
 
