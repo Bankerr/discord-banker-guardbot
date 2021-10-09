@@ -187,13 +187,13 @@ let guild = client2.guilds.cache.get(config.ServerID)
 let logger = guild.channels.cache.get(config.ChannelGuardLog) 
 await channel.clone({reason: 'Banker Guard System!'})
 KorumaAc2(config.ServerID);
+Karar2(member.executor.id, 'ban');
 client1.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
 client2.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
 client3.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
 client4.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
 client5.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-Karar2(member.executor.id, 'ban');
-let Member = guild.member(member.executor.id);
+ let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()  
 if(logger) return client2.users.cache.get(config.BotOwner).send(`<@${member.executor.id}> \`${member.executor.id}\` Tarafından ${channel.name} \`${channel.id}\` Kanalı Silindi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
 logger.send(`@everyone <@${member.executor.id}> \`${member.executor.id}\` Tarafından ${channel.name} \`${channel.id}\` Kanalı Silindi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
