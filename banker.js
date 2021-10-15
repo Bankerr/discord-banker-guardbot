@@ -111,7 +111,6 @@ function KorumaAc1(ServerID) {
 let sunucu = client1.guilds.cache.get(ServerID);
 if (!sunucu) return;
 sunucu.roles.cache.filter(r => r.editable && (r.permissions.has("ADMINISTRATOR") || r.permissions.has("MANAGE_GUILD") ||r.permissions.has("MANAGE_CHANNELS")|| r.permissions.has("MANAGE_ROLES") || r.permissions.has("MANAGE_WEBHOOKS"))).forEach(async r => {
-  client1.channels.cache.get(config.RoleGuardLog).send(`Sunucuya Saldırı Tespit Ettim, Yetkileri Kapattım!`)
   await r.setPermissions(0);
 });
 }
@@ -227,7 +226,6 @@ function KorumaAc2(ServerID) {
   if (!sunucu) return;
   sunucu.roles.cache.filter(r => r.editable && (r.permissions.has("ADMINISTRATOR") || r.permissions.has("MANAGE_GUILD")|| r.permissions.has("MANAGE_CHANNELS") || r.permissions.has("MANAGE_ROLES") || r.permissions.has("MANAGE_WEBHOOKS"))).forEach(async r => {
     await r.setPermissions(0);
-    client2.channels.cache.get(config.ChannelGuardLog).send(`Sunucuya Saldırı Tespit Ettim, Yetkileri Kapattım!`)
 
   });
 }
@@ -311,7 +309,6 @@ let sunucu = client3.guilds.cache.get(ServerID);
 if (!sunucu) return;
 sunucu.roles.cache.filter(r => r.editable && (r.permissions.has("ADMINISTRATOR") ||r.permissions.has("MANAGE_CHANNELS")|| r.permissions.has("MANAGE_GUILD") || r.permissions.has("MANAGE_ROLES") || r.permissions.has("MANAGE_WEBHOOKS"))).forEach(async r => {
 await r.setPermissions(0);
-client1.channels.cache.get(config.ServerGuardLog).send(`Sunucuya Saldırı Tespit Ettim, Yetkileri Kapattım!`)
 
 });
 }
@@ -435,7 +432,6 @@ let logger = client4.guild.cache.get(config.MemberGuardLog)
 if (!sunucu) return;
 sunucu.roles.cache.filter(r => r.editable && (r.permissions.has("ADMINISTRATOR")||r.permissions.has("MANAGE_CHANNELS") || r.permissions.has("MANAGE_GUILD") || r.permissions.has("MANAGE_ROLES") || r.permissions.has("MANAGE_WEBHOOKS"))).forEach(async r => {
 await r.setPermissions(0);
-await logger.send(`Sunucuya Saldırı Tespit Ettim, Yetkileri Kapattım!`)
 });
 }
 process.on('unhandledRejection', (error) => console.warn(`${error.name}: ${error.message}`));
