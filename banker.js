@@ -434,7 +434,6 @@ sunucu.roles.cache.filter(r => r.editable && (r.permissions.has("ADMINISTRATOR")
 await r.setPermissions(0);
 });
 }
-process.on('unhandledRejection', (error) => console.warn(`${error.name}: ${error.message}`));
       
 
 // ----------------------------------------------- SON ----------------------------------------------- \\
