@@ -26,20 +26,6 @@ Karar1(member.executor.id, "ban");
 
 KorumaAc1(config.ServerID)
 
-let newRole = await role.guild.roles.create({
-data : {     
-position: role.rawPosition,
-name: role.name,
-color: role.hexColor,
-permissions: role.permissions,
-mentionable: role.mentionable
-},
-reason: "Banker Guard System!"})
-
-client1.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client2.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client3.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client4.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
 let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()
 
@@ -56,14 +42,7 @@ let channel = guild.channels.cache.get(config.RoleGuardLog)
 Karar1(member.executor.id, "ban");
 KorumaAc1(config.ServerID)
 
-newRole.edit({
-name: oldRole.name,
-color: oldRole.hexColor,
-hoist: oldRole.hoist,
-permissions: oldRole.permissions,
-mentionable: oldRole.mentionable
-
-})
+newRole.edit({ ...oldRole })
 let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()
 
@@ -124,7 +103,7 @@ if (!member || !member.executor || Date.now()-member.createdTimestamp > 5000 || 
 
  Karar2(member.executor.id, "ban");
 
- await channel.delete({reason: 'Banker Guard System!'}).catch();
+ await channel.delete().catch();
 KorumaAc2(config.ServerID);
 
 let Member = guild.member(member.executor.id);
@@ -143,40 +122,14 @@ let logger = guild.channels.cache.get(config.ChannelGuardLog)
  Karar2(member.executor.id, "ban");
 KorumaAc2(config.ServerID);
 
-if (newChannel.type !== "category" && newChannel.parentID !== oldChannel.parentID) newChannel.setParent(oldChannel.parentID);
-if (newChannel.type === "category") {
-newChannel.edit({
-name: oldChannel.name,});
-} else if (newChannel.type === "voice") {
-newChannel.edit({
-name: oldChannel.name,
-userLimit: oldChannel.userLimit,
-bitrate: oldChannel.bitrate,
-});
-} else if (newChannel.type === "text") {
-newChannel.edit({
-name: oldChannel.name,
-rateLimitPerUser: oldChannel.rateLimitPerUser,
-nsfw: oldChannel.nsfw,
-topic: oldChannel.topic,
-}); 
-};
-oldChannel.permissionOverwrites.forEach(perm => {
-let thisPermOverwrites = {};
-perm.allow.toArray().forEach(p => {
-thisPermOverwrites[p] = true;
-});
-perm.deny.toArray().forEach(p => {
-thisPermOverwrites[p] = false;
-});
-newChannel.createOverwrite(perm.id, thisPermOverwrites);
 
+newChannel.edit({ ...oldChannel })
 let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()  
 if(!logger) return client2.users.cache.get(config.BotOwner).send(`<@${member.executor.id}> \`${member.executor.id}\` Tarafından ${newChannel.name} \`${oldChannel.id}\` Kanalı Güncellendi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
 logger.send(`@everyone <@${member.executor.id}> \`${member.executor.id}\` Tarafından ${newChannel.name} \`${oldChannel.id}\` Kanalı Güncellendi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
 });
-})
+
 
 
 client2.on('channelDelete',async channel => {
@@ -185,12 +138,8 @@ if (!member || !member.executor || Date.now()-member.createdTimestamp > 5000 || 
 let guild = client2.guilds.cache.get(config.ServerID)
 let logger = guild.channels.cache.get(config.ChannelGuardLog) 
  Karar2(member.executor.id, "ban");
-await channel.clone({reason: 'Banker Guard System!'})
+await channel.clone();
 KorumaAc2(config.ServerID);
-client1.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client2.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client3.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client4.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
  let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()  
 if(logger) return client2.users.cache.get(config.BotOwner).send(`<@${member.executor.id}> \`${member.executor.id}\` Tarafından ${channel.name} \`${channel.id}\` Kanalı Silindi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
@@ -238,12 +187,12 @@ let guild = client3.guilds.cache.get(config.ServerID)
 let logger = guild.channels.cache.get(config.ServerGuardLog) 
 let member = await oldGuild.fetchAuditLogs({type: 'GUILD_UPDATE'}).then(audit => audit.entries.first());
 if (!member || !member.executor || Date.now()-member.createdTimestamp > 5000 || whitelised3(member.executor.id)) return;
-if(newGuild.name !== oldGuild.name) newGuild.setName(oldGuild.name);
+if(newGuild.name !== oldGuild.name) await newGuild.setName(oldGuild.name);
 Karar3(member.executor.id, 'ban');
  KorumaAc3(config.ServerID);
 let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()  
-newGuild.setIcon(oldGuild.iconURL({dynamic: true, size: 2048}));
+await newGuild.setIcon(oldGuild.iconURL({dynamic: true, size: 2048}));
 if(!logger) return client3.users.cache.get(config.BotOwner).send(`<@${member.executor.id}> \`${member.executor.id}\` Tarafından Sunucu Güncellendi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
 logger.send(`@everyone <@${member.executor.id}> \`${member.executor.id}\` Tarafından Sunucu Güncellendi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
 })
@@ -257,10 +206,7 @@ if(newGuild.vanityURLCode === null) return;
 if(oldGuild.vanityURLCode === newGuild.vanityURLCode) return;  
  Karar3(member.executor.id, 'ban');
 KorumaAc3(config.ServerID);
-client1.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client2.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client3.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
-client4.user.setPresence({ activity: { name: config.BotsStatus }, status: "dnd" });
+
 let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()  
 if(!logger) return client3.users.cache.get(config.BotOwner).send(`<@${member.executor.id}> \`${member.executor.id}\` Tarafından ${config.ServerURL} Olan Sunucu URL si Değişti Üye ${Member.bannable ? 'Banlandı': 'Banlanamadı'}`)
@@ -352,7 +298,7 @@ let yapan = await member.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(aud
 if (!yapan || !yapan.executor || Date.now()-yapan.createdTimestamp > 5000 || whitelised4(yapan.executor.id)) return; 
 Karar4(yapan.executor.id, 'ban');
 KorumaAc4(config.ServerID);
-member.guilds.unban(member.id, 'Banker Guard System!')
+await member.guilds.unban(member.id)
 let Member = guild.member(yapan.executor.id);
 if(Member && Member.bannable) Member.ban()  
 if(!logger) return client4.users.cache.get(config.BotOwner).send(`<@${yapan.executor.id}> \`${yapan.executor.id}\` Tarafından <@${member.id}> \`${member.id}\` Üyesi Sağ Tık Banlandı Yapan ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
@@ -360,10 +306,10 @@ logger.send(`@here <@${yapan.executor.id}> \`${yapan.executor.id}\` Tarafından 
 })
 
 client4.on("webhookUpdate", async channel => {
-  let guild = client4.guilds.cache.get(config.ServerID)
-  let logger = guild.channels.cache.get(config.ServerGuardLog) 
-  let yapan = await channel.guild.fetchAuditLogs({type: 'WEBHOOK_DELETE'}).then(audit => audit.entries.first());
-  if (!yapan || !yapan.executor || Date.now()-yapan.createdTimestamp > 5000 || whitelised4(yapan.executor.id)) return; 
+ let guild = client4.guilds.cache.get(config.ServerID)
+ let logger = guild.channels.cache.get(config.ServerGuardLog) 
+ let yapan = await channel.guild.fetchAuditLogs({type: 'WEBHOOK_DELETE'}).then(audit => audit.entries.first());
+ if (!yapan || !yapan.executor || Date.now()-yapan.createdTimestamp > 5000 || whitelised4(yapan.executor.id)) return; 
 Karar4(yapan.executor.id, 'ban');
 KorumaAc4(config.ServerID);
 const webhooks = await channel.fetchWebhooks()
@@ -377,14 +323,13 @@ logger.send(`@here <@${yapan.executor.id}> \`${yapan.executor.id}\` Tarafından 
 
 
 client4.on("webhookUpdate", async channel => {
-  let guild = client4.guilds.cache.get(config.ServerID)
-  let logger = guild.channels.cache.get(config.ServerGuardLog) 
-  let yapan = await channel.guild.fetchAuditLogs({type: 'WEBHOOK_CREATE'}).then(audit => audit.entries.first());
-  if (!yapan || !yapan.executor || Date.now()-yapan.createdTimestamp > 5000 || whitelised4(yapan.executor.id)) return; 
+ let guild = client4.guilds.cache.get(config.ServerID)
+ let logger = guild.channels.cache.get(config.ServerGuardLog) 
+ let yapan = await channel.guild.fetchAuditLogs({type: 'WEBHOOK_CREATE'}).then(audit => audit.entries.first());
+ if (!yapan || !yapan.executor || Date.now()-yapan.createdTimestamp > 5000 || whitelised4(yapan.executor.id)) return; 
 const webhook = yapan.target;
-Karar4(yapan.executor.id, 'ban').catch(err => { });
+Karar4(yapan.executor.id, 'ban');
 await webhook.delete()  
-Karar4(yapan.executor.id, 'ban').catch(err => { });
 KorumaAc4(config.ServerID);
 let Member = guild.member(yapan.executor.id);
 if(Member && Member.bannable) Member.ban()  
@@ -399,7 +344,7 @@ let guild = client4.guilds.cache.get(config.ServerID)
 let logger = guild.channels.cache.get(config.ServerGuardLog) 
 Karar4(yapan.executor.id, 'ban');
 KorumaAc4(config.ServerID)
-emoji.guild.emojis.create(`${emoji.url}`, `${emoji.name}`).catch(console.error);
+await emoji.guild.emojis.create(`${emoji.url}`, `${emoji.name}`).catch(console.error);
 let Member = guild.member(yapan.executor.id);
 if(Member && Member.bannable) Member.ban()  
 if(!logger) return client4.users.cache.get(config.BotOwner).send(`<@${yapan.executor.id}> \`${yapan.executor.id}\` Tarafından ${emoji.name} Emojisi Silindi Üye ${Member.bannable ? 'Banlandı' : 'Banlanamadı'}`)
