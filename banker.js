@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const config = require('./config.json')
 const request = require('request');
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs')
  
 // evet arkadaşlar fayikcim takliti diyenler için eco configle uğraşmak istemediğim için böyle bişe yaptım teşekkürler
 const roleg = require("discord.js");
@@ -22,10 +21,7 @@ let channel = guild.channels.cache.get(config.RoleGuardLog)
 let member = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first());
 if (!member || !member.executor || Date.now()-member.createdTimestamp > 5000 || whitelised1(member.executor.id)) return;
 Karar1(member.executor.id, "ban");
-
-
 KorumaAc1(config.ServerID)
-
 let Member = guild.member(member.executor.id);
 if(Member && Member.bannable) Member.ban()
 
